@@ -42,6 +42,7 @@ class UserOrder {
         this.cardNumber = 1234123412341234
         this.cardCVV = 123
         this.totalPrice = 0
+        this.saveToLocalStorage = false
     }
 
     updateOrderBucket(menuName, actionType, menuPrice=1) {
@@ -97,6 +98,14 @@ class UserOrder {
         return this
     }
 
+    getSaveToLocalStorage() {
+        return this.saveToLocalStorage
+    }
+
+    toggleSaveToLocalStorage() {
+        this.saveToLocalStorage = !this.saveToLocalStorage
+    }
+
     clearUpBucket() {
         this.allOrderLine = []
         this.totalPrice = 0
@@ -104,7 +113,6 @@ class UserOrder {
 }
 
 const userOrderBucket = configureLocalStorage()
-console.log(userOrderBucket.getOrderData())
 
 function configureLocalStorage() {
     let userOrderBucketFromLocalStorage
@@ -158,6 +166,12 @@ document.addEventListener('click', (e) => {
     else if (e.target.id === "complete-order-btn") {
         renderCheckoutPaySection()
     }
+    // else if (e.target.id === "saveToLocalStorage") {
+    //     userOrderBucket.toggleSaveToLocalStorage()
+    // }
+    // else if (e.target.id === "removeLocalStorage") {
+    //     localStorage.removeItem("newOrderQueue")
+    // }
 
     localStorage.setItem('userOrderBucket', JSON.stringify(userOrderBucket))
     
@@ -181,8 +195,10 @@ function renderCard(menuObj) {
     return (
         `
         <div id="menu-id-${menuObj.id}">
-            <span class="menu-icon-img">${menuObj.emoji}</span>
-            <div class="menu details">
+            <div class="emoji-container">
+                <span class="menu-icon-img">${menuObj.emoji}</span>
+            </div>
+            <div class="menu-details">
                 <h2 class="menu-name">${menuObj.name}</h2>
                 <p class="sm menu-ingredients">
                     ${menuObj.ingredients.join(", ")}
@@ -223,6 +239,7 @@ function fillOutYourOrderContainer() {
         </div>
         <div class="menu-order-row">
             <p class="menu-order-total-price-tag">Total price:</p>
+            <span class="dots"></span>
             <p class="menu-order-total-price">${userOrderBucket.getTotalPrice()}</p>
         </div>
         <button class="complete-order-btn" id="complete-order-btn">Order now!</button>
@@ -250,19 +267,22 @@ function renderOrderComplete(formData) {
     document.getElementById('order-complete').classList.remove("hidden")
 
     // send data order in userOrderBucket to server
-    
-    userOrderBucket.setCardNumber(formData.get("cardNumber"))
-    userOrderBucket.setCardCVV(formData.get('cardCVV'))
-    userOrderBucket.setName(formData.get("name"))
+    // if (userOrderBucket.getSaveToLocalStorage()) {
+        userOrderBucket.setCardNumber(formData.get("cardNumber"))
+        userOrderBucket.setCardCVV(formData.get('cardCVV'))
+        userOrderBucket.setName(formData.get("name"))
 
-    let orderQueueLocalStorage = JSON.parse(localStorage.getItem("newOrderQueue"))
-    if (orderQueueLocalStorage) {
-        orderQueueLocalStorage.push(Object.assign({}, userOrderBucket))
-        localStorage.setItem("newOrderQueue", JSON.stringify(Array.from(orderQueueLocalStorage)))
-    }
-    else {
-        localStorage.setItem("newOrderQueue", JSON.stringify(Array.from([userOrderBucket])))
-    }
+        let orderQueueLocalStorage = JSON.parse(localStorage.getItem("newOrderQueue"))
+        if (orderQueueLocalStorage) {
+            orderQueueLocalStorage.push(Object.assign({}, userOrderBucket))
+            localStorage.setItem("newOrderQueue", JSON.stringify(Array.from(orderQueueLocalStorage)))
+        }
+        else {
+            localStorage.setItem("newOrderQueue", JSON.stringify(Array.from([userOrderBucket])))
+        }
+    // } else {
+        // localStorage.removeItem("newOrderQueue")
+    // }
 
     // then remove bucket
     userOrderBucket.clearUpBucket()

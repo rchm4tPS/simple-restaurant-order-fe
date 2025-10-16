@@ -84,6 +84,14 @@ p.restaurant-tagline {
     margin-right: 32px;
 }
 
+.emoji-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 90px;
+}
+
 .add-menu-qty-btn,
 .subtract-menu-qty-btn {
     font-family: sans-serif;
@@ -257,6 +265,26 @@ input {
     border-radius: 4px;
 }
 
+input#saveToLocalStorage,
+input#removeLocalStorage {
+    margin-bottom: 0px;
+    display: inline;
+    width: 16px;
+    height: 16px;
+}
+
+.checkbox-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+label {
+    margin-bottom: 3px;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .checkout-modal-payment button {
     margin-top: 24px;
     font-size: 20px;
@@ -283,8 +311,133 @@ input {
     display: none;
 }
 
+.dots {
+    flex-grow: 1;
+    border-bottom: 3px dotted #999999;
+    height: 20px;
+    margin: 0 10px;
+}
+
 @media only screen and (max-width: 600px) {
+    header.hero {
+        background-color: rgba(0, 0, 0, 0.4);
+        background-blend-mode: darken;
+    }
+
+    h1.restaurant-name {
+        font-size: 32px;  
+        margin-top: 28px;
+    }
+
+    p.restaurant-tagline {
+        font-size: 20px;
+        text-shadow: black 0 0 40px;
+    }
+
     .body-container {
         width: 100%;
+    }
+
+    .menu-icon-img {
+        font-size: 68px;
+        width:fit-content;
+        margin-right: 8px;
+    }
+
+    .emoji-container {
+        width: 80px
+    }
+
+    .pre-checkout-section {
+        padding: 14px 22px;
+    }
+
+    .menu-cards {
+        padding: 0;
+    }
+
+    [id^="menu-id-"] {
+        padding: 35px 22px 30px 22px;
+        gap: 8px;
+    }
+
+    /* [id^="menu-id-"]:nth-child(odd) {
+        background-color: #c4ede0;
+    } */
+
+    .menu-details {
+        margin-right: 8px;
+    }
+
+    .add-menu-qty-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 24px;
+    }
+
+    .subtract-menu-qty-btn {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .subtract-menu-qty-btn > div {
+        height: 2px;
+        width: 8px;
+    }
+
+    h2.menu-name,
+    .menu-line-order-menu-name {
+        font-size: 24px;
+    }
+
+    .checkout-modal-payment {
+        width: 90%;
+        inset: 0 0 0 0;
+        margin: 20% auto;
+    }
+
+    .checkout-modal-payment h2 {
+        font-size: 22px;
+        margin: 48px 12px;
+    }
+
+    input {
+        width: 100%;
+        display: block;
+        font-size: 16px;
+        line-height: 40px;
+        padding: 0 16px;
+        margin-bottom: 16px;
+    }
+
+    .menu-order-container {
+        margin-top: 30px;
+    }
+
+    .menu-order-container > h2 {
+        margin-bottom: 24px
+    }
+
+    .menu-line-order-row:last-child {
+        margin-bottom: 18px;
+    }
+
+    .menu-order-row {
+        gap: 0px;
+    }
+
+    .checkout-modal-payment button {
+        font-size: 16px;
+    }
+
+    .order-complete {
+        padding: 25px 30px;
+        font-size: 24px;
+    }
+
+    h2.complete-order-gratitude {
+        font-size: 26px;
     }
 }
