@@ -1,0 +1,14 @@
+{
+  "name": "Scrim-s02tj65",
+  "description": "https://scrimba.com/frontend-path-c0j/~0if",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "Scrim-s02tj65": "file:",
+    "vite": "latest"
+  }
+}

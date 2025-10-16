@@ -1,0 +1,290 @@
+/* layouting */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --minus-sign-black: black;
+    --minus-sign-white: white;
+}
+
+body {
+    font-family: "Smythe", system-ui;
+    margin: 0;
+} 
+
+.body-container {
+    margin: 0 auto;
+    width: 600px;
+}
+
+header.hero {
+    height: 167px;
+    background: url("/hero-header.jpg");
+    background-size: cover;
+    background-position-y: 66%;
+    background-repeat: no-repeat;
+
+    padding: 18px 0 0 46px;
+
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+h1 {
+    font-size: 39px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 16.8px;
+    margin: 0;
+}
+
+p.restaurant-tagline {
+    font-size: 22px;
+    margin-top: 0;
+}
+
+.menu-cards,
+.pre-checkout-section {
+    padding: 22px 32px;
+}
+
+[id^="menu-id-"] {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #D2D2D2;
+    padding: 45px 10px 50px 0;
+}
+
+.menu-price {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.menu-price::before {
+    content: "$";
+}
+
+.menu-icon-img {
+    font-size: 89px;
+    margin: 0;
+    text-align: left;
+    vertical-align: middle;
+    line-height: 1px;
+    margin-right: 32px;
+}
+
+.add-menu-qty-btn,
+.subtract-menu-qty-btn {
+    font-family: sans-serif;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1.5px solid #DEDEDE;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    font-size: 28px;
+}
+
+.add-menu-qty-btn {
+    margin: 0 0 0 auto;
+}
+
+.subtract-menu-qty-btn {
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+
+.subtract-menu-qty-btn > div {
+    width: 15px;
+    height: 3px;
+    background-color: var(--minus-sign-black);
+}
+
+.add-menu-qty-btn::after,
+.subtract-menu-qty-btn::after {
+    font-weight: 200;
+    color: #3C3C3C;
+    margin: 0;
+    font-size: 28px;
+}
+
+.subtract-menu-qty-btn:hover,
+.subtract-menu-qty-btn:focus {
+    background-color: #ff2f2f;
+    color: white;
+}
+
+.subtract-menu-qty-btn:hover > *,
+.subtract-menu-qty-btn:focus > *{
+    background-color: var(--minus-sign-white);
+}
+
+.pre-checkout-section {
+    margin-bottom: 23px;
+}
+
+.menu-order-container {
+    margin-top: 1px;
+}
+
+.menu-order-container > h2 {
+    text-align: center;
+    margin-bottom: 53px;
+}
+
+.menu-line-order {
+    border-bottom: 2px #393333 solid;
+}
+
+.menu-line-order-row, 
+.menu-order-row {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin: 0;
+}
+
+.menu-order-row {
+    margin-bottom: 42px;
+}
+
+.menu-line-order-row:last-child {
+    margin-bottom: 31px;
+}
+
+.menu-line-order-menu-name,
+.menu-order-total-price-tag {
+    font-size: 28px;  
+    margin: 11px 0;
+}
+
+.remove-line-order-action {
+    font-size: 12px;
+    color: #BBBBBB;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+.menu-line-order-menu-price, 
+.menu-order-total-price {
+    margin: auto 0 auto auto;
+    font-size: 20px;
+}
+
+.menu-line-order-menu-price::before,
+.menu-order-total-price::before {
+    content: "$"
+}
+
+.complete-order-btn,
+.pay-order-btn {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #16DB99;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    padding: 18px;
+    box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.checkout-modal-payment {
+    position: fixed;
+    inset: 0 0 0 0;
+    margin: auto auto;
+    padding: 0 24px 30px;
+    background-color: white;
+    width: 524px;
+    height: fit-content;
+    border-radius: 8px;
+    box-shadow: 6px 6px 255px 0 rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.fa-solid {
+    font-size: 24px;
+    color: #AAA
+}
+
+.checkout-modal-payment h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 48px 110px;
+    line-height: normal;
+}
+
+form {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    display: block;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    line-height: 60px;
+    font-weight: 400;
+    padding: 0 26px;
+    margin-bottom: 24px;
+    border: 1.3px solid rgba(117, 117, 117, 1);
+    border-radius: 4px;
+}
+
+.checkout-modal-payment button {
+    margin-top: 24px;
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+}
+
+.order-complete  {
+    margin: 22px 32px;
+    padding: 50px 60px;
+    background-color: rgba(236, 253, 245, 1);
+    text-align: center;
+    border-radius: 3px;
+}
+
+.order-complete h2 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* utility */
+.hidden {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .body-container {
+        width: 100%;
+    }
+}

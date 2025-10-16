@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index.css">
+    <title>Restaurant Order Mobile App</title>
+</head>
+<body>
+    <div class="body-container">
+        <header class="hero">
+            <h1 class="restaurant-name">Jimmy's Diner</h1>
+            <p class="restaurant-tagline">The best burgers and pizzas in town.</p>
+        </header>
+        <section class="menu-cards" id="menu-cards">
+            <!-- Add food menu from data.js here -->
+        </section>
+        <section class="pre-checkout-section" id="pre-checkout-section">
+            <!-- Add summary checkout here -->
+        </section>
+        <section class="checkout-modal-payment hidden" id="checkout-modal-payment">
+            <span class="icon">
+                <i class="fa-solid fa-xmark" data-close-modal="close-modal"></i>
+            </span>
+            <div class="header-modal-payment">
+                <h2>Enter card details</h2>
+            </div>
+            <form id="payment-form">
+                <input type="text" id="name" name="name" placeholder="Enter your name" required minlength="3">
+                <input type="text" id="card-number" name="cardNumber" placeholder="Enter card number" inputmode="numeric" pattern="[0-9]{12,16}" required maxlength="16">
+                <input type="text" id="cvv" name="cardCVV" placeholder="Enter CVV" inputmode="numeric" pattern="[0-9]{3,3}" required maxlength="3">
+                <button type="submit" class="pay-order-btn" id="pay-order-btn">Pay!</button>
+            </form>
+        </section>
+        <section class="order-complete hidden" id="order-complete">
+            <h2 class="complete-order-gratitude">Thanks, James! Your order is on its way!</h2>
+        </section>
+    </div>
+    <script src="index.js" type="module"></script>
+</body>
+</html>
+
