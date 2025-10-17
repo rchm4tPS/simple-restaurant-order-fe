@@ -22,7 +22,7 @@ body {
 
 header.hero {
     height: 167px;
-    background: url("/hero-header.jpg");
+    background: url("/images/hero-header.jpg");
     background-size: cover;
     background-position-y: 66%;
     background-repeat: no-repeat;
